@@ -1,0 +1,27 @@
+{
+    "name": "augstudios/alerts",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derek J. Augustine",
+            "email": "augshow@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0",
+        "illuminate/session": "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Augstudios\\Alerts\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "5.0-dev"
+        }
+    },
+    "minimum-stability": "stable"
+}
