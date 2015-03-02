@@ -12,7 +12,7 @@ interface AlertsStore
      *
      * @return AlertsStore
      */
-    public function add($message, $type);
+    public function add($message, AlertType $type);
 
     /**
      * @return Collection

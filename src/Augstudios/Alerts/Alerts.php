@@ -4,11 +4,6 @@ namespace Augstudios\Alerts;
 
 class Alerts
 {
-    const TYPE_INFO = 'info';
-    const TYPE_SUCCESS = 'success';
-    const TYPE_DANGER = 'danger';
-    const TYPE_WARNING = 'warning';
-
     /**
      * The session writer.
      *
@@ -26,7 +21,7 @@ class Alerts
         $this->store = $store;
     }
 
-    public function add($message, $type = 'info')
+    public function add($message, AlertType $type = AlertType::Info)
     {
         $this->store->add($message, $type);
     }
@@ -36,7 +31,7 @@ class Alerts
         return $this->store->prior();
     }
 
-    public function priorOfType($type)
+    public function priorOfType(AlertType $type)
     {
         return $this->prior()->filter(function ($item) use ($type) {
             return $item['type'] === $type;
