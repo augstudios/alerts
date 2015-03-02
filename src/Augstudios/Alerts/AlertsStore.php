@@ -6,13 +6,14 @@ use Illuminate\Support\Collection;
 
 interface AlertsStore
 {
+
     /**
-     * @param $message
-     * @param $type
+     * @param string $message
+     * @param AlertType|string $type
      *
-     * @return AlertsStore
+     * @return mixed
      */
-    public function add($message, AlertType $type);
+    public function add($message, $type);
 
     /**
      * @return Collection

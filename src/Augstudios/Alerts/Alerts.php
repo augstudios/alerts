@@ -21,7 +21,7 @@ class Alerts
         $this->store = $store;
     }
 
-    public function add($message, AlertType $type)
+    public function add(string $message, string $type)
     {
         $this->store->add($message, $type);
     }

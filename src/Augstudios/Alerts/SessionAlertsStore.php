@@ -33,15 +33,15 @@ class SessionAlertsStore implements AlertsStore
     }
 
     /**
-     * @param           $message
-     * @param AlertType $type
+     * @param string $message
+     * @param AlertType|string $type
      *
      * @return $this
      */
-    public function add($message, AlertType $type)
+    public function add($message, $type)
     {
         $this->current->push([
-            'type' => $type,
+            'type' => get_class($type) === 'AlertType' ? $type->getValue() : $type,
             'message' => $message
         ]);
 
