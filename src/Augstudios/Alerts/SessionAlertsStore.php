@@ -39,7 +39,7 @@ class SessionAlertsStore implements AlertsStore
      */
     private static function str_type($type)
     {
-        return get_class($type) === 'AlertType' ? $type->getValue() : $type;
+        return is_string($type) ? $type : $type->getValue();
     }
 
     /**
