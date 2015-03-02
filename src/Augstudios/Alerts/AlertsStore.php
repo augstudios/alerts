@@ -8,7 +8,7 @@ interface AlertsStore
 {
 
     /**
-     * @param string $message
+     * @param string           $message
      * @param AlertType|string $type
      *
      * @return mixed
@@ -24,4 +24,11 @@ interface AlertsStore
      * @return Collection
      */
     public function prior();
+
+    /**
+     * @param AlertType|string $type
+     *
+     * @return mixed
+     */
+    public function priorOfType($type);
 }

@@ -33,7 +33,17 @@ class SessionAlertsStore implements AlertsStore
     }
 
     /**
-     * @param string $message
+     * @param AlertType|string $type
+     *
+     * @return mixed
+     */
+    private static function str_type($type)
+    {
+        return get_class($type) === 'AlertType' ? $type->getValue() : $type;
+    }
+
+    /**
+     * @param string           $message
      * @param AlertType|string $type
      *
      * @return $this
@@ -41,7 +51,7 @@ class SessionAlertsStore implements AlertsStore
     public function add($message, $type)
     {
         $this->current->push([
-            'type' => get_class($type) === 'AlertType' ? $type->getValue() : $type,
+            'type' => static::str_type($type),
             'message' => $message
         ]);
 
@@ -64,5 +74,17 @@ class SessionAlertsStore implements AlertsStore
     public function prior()
     {
         return $this->prior;
+    }
+
+    /**
+     * @param AlertType|string $type
+     *
+     * @return Collection
+     */
+    public function priorOfType($type)
+    {
+        return $this->prior()->filter(function ($item) use ($type) {
+            return $item['type'] === static::str_type($type);
+        });
     }
 }

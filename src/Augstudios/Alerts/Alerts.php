@@ -21,7 +21,11 @@ class Alerts
         $this->store = $store;
     }
 
-    public function add(string $message, string $type)
+    /**
+     * @param string $message
+     * @param AlertType|string $type
+     */
+    public function add($message, $type)
     {
         $this->store->add($message, $type);
     }
@@ -31,10 +35,13 @@ class Alerts
         return $this->store->prior();
     }
 
-    public function priorOfType(AlertType $type)
+    /**
+     * @param AlertType|string $type
+     *
+     * @return static
+     */
+    public function priorOfType($type)
     {
-        return $this->prior()->filter(function ($item) use ($type) {
-            return $item['type'] === $type;
-        });
+        return $this->store->priorOfType($type);
     }
 }
