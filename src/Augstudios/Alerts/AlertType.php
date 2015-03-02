@@ -2,7 +2,7 @@
 
 namespace Augstudios\Alerts;
 
-use MabeEnum\Enum;
+use MyCLabs\Enum\Enum;
 
 class AlertType extends Enum
 {
