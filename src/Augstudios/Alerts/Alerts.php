@@ -22,14 +22,61 @@ class Alerts
     }
 
     /**
-     * @param string $message
+     * @param string           $message
      * @param AlertType|string $type
+     *
+     * @return Alerts
      */
     public function add($message, $type)
     {
         $this->store->add($message, $type);
+
+        return $this;
     }
 
+    /**
+     * @param $message
+     *
+     * @return Alerts
+     */
+    public function success($message)
+    {
+        return $this->add($message, AlertType::Success);
+    }
+
+    /**
+     * @param $message
+     *
+     * @return Alerts
+     */
+    public function danger($message)
+    {
+        return $this->add($message, AlertType::Danger);
+    }
+
+    /**
+     * @param $message
+     *
+     * @return Alerts
+     */
+    public function warning($message)
+    {
+        return $this->add($message, AlertType::Warning);
+    }
+
+    /**
+     * @param $message
+     *
+     * @return mixed
+     */
+    public function info($message)
+    {
+        return $this->add($message, AlertType::Info);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function prior()
     {
         return $this->store->prior();
@@ -38,7 +85,7 @@ class Alerts
     /**
      * @param AlertType|string $type
      *
-     * @return static
+     * @return \Illuminate\Support\Collection
      */
     public function priorOfType($type)
     {

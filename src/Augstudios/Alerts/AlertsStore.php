@@ -31,4 +31,9 @@ interface AlertsStore
      * @return mixed
      */
     public function priorOfType($type);
+
+    /**
+     * @return string
+     */
+    public function storeKey();
 }

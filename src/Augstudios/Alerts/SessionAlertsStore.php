@@ -87,4 +87,11 @@ class SessionAlertsStore implements AlertsStore
             return $item['type'] === static::str_type($type);
         });
     }
+
+    /**
+     * @return string
+     */
+    public function storeKey(){
+        return static::STORE_KEY;
+    }
 }
