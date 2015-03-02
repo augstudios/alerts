@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Augstudios\\Alerts\\": "src/"
+            "Augstudios\\Alerts\\": "src/Augstudios/Alerts"
         }
     },
     "extra": {
