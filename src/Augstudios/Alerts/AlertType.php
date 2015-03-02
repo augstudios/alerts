@@ -2,9 +2,9 @@
 
 namespace Augstudios\Alerts;
 
-use SplEnum;
+use MabeEnum\Enum;
 
-class AlertType extends SplEnum
+class AlertType extends Enum
 {
     const __default = self::Info;
 
