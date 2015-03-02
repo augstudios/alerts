@@ -38,7 +38,7 @@ class SessionAlertsStore implements AlertsStore
      *
      * @return $this
      */
-    public function add($message, AlertType $type = AlertType::Info)
+    public function add($message, AlertType $type)
     {
         $this->current->push([
             'type' => $type,
