@@ -1,8 +1,8 @@
-<div class="alert alert-{{ $alert['type'] }}@if($alert['dismissible']){{ ' alert-dismissible' }}@endif" role="alert">
-    @if($alert['dismissible'])
+<div class="alert alert-{{ array_get($alert, 'type') }}@if(array_get($alert, 'dismissible')){{ ' alert-dismissible' }}@endif" role="alert">
+    @if(array_get($alert, 'dismissible'))
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
     @endif
-    {{ $alert['message'] }}
+    {{ array_get($alert, 'message') }}
 </div>

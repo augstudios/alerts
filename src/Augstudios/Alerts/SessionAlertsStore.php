@@ -56,7 +56,8 @@ class SessionAlertsStore implements AlertsStore
     {
         $this->current->push([
             'type' => static::str_type($type),
-            'message' => $message
+            'message' => $message,
+            'dismissible' => true
         ]);
 
         $this->session->flash($this->session_key, $this->current);
