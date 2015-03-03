@@ -14,9 +14,12 @@ class AlertsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $config = $this->app->make('path.config');
+        $base = $this->app->make('path.base');
+
         // config
         $this->publishes([
-            __DIR__ . '/../../config/alerts.php' => config_path('augstudios/alerts.php'),
+            __DIR__ . '/../../config/alerts.php' => $config . '/augstudios/alerts.php',
         ]);
         $this->mergeConfigFrom(
             __DIR__ . '/../../config/alerts.php', 'augstudios.alerts'
@@ -25,7 +28,7 @@ class AlertsServiceProvider extends ServiceProvider
         // views
         $this->loadViewsFrom(__DIR__ . '/../../views', 'alerts');
         $this->publishes([
-            __DIR__ . '/../../views' => base_path('resources/views/vendor/alerts'),
+            __DIR__ . '/../../views' => $base . '/resources/views/vendor/alerts'
         ]);
     }
 
