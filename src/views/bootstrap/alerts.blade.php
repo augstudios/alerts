@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             @foreach(Alerts::prior() as $alert)
-                @include('alerts::bootstrap.alert', $alert)
+                @include('alerts::bootstrap.alert', ['alert' => $alert])
             @endforeach
         </div>
     </div>
