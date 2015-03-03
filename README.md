@@ -15,7 +15,7 @@ First, install the package and it's dependencies with composer by running within
 
 	composer require augstudios/alerts
 	
-Then, you will need to add the the `Alerts` service provider and facade for alerts to your application's configuration in `/app/config/app.php`.
+Then, you will need to add the the `Alerts` service provider and facade to your application's configuration in `/app/config/app.php`.
 
 	'providers' => [
 	    ...
