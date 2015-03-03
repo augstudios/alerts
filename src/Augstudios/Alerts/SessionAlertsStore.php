@@ -2,15 +2,14 @@
 
 namespace Augstudios\Alerts;
 
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Session\Store;
 use Illuminate\Support\Collection;
 
 class SessionAlertsStore implements AlertsStore
 {
-    /**
-     *
-     */
-    const STORE_KEY = 'alerts';
+    /** @var string $session_key */
+    protected $session_key;
 
     /** @var Store $session */
     protected $session;
@@ -24,11 +23,16 @@ class SessionAlertsStore implements AlertsStore
     /**
      * @param Store      $session
      * @param Collection $collection
+     * @param Repository $config
      */
-    function __construct(Store $session, Collection $collection)
+    function __construct(Store $session, Collection $collection, Repository $config)
     {
+        // set configurable options
+        $this->session_key = $config->get('augstudios/alerts.session_key', 'alerts');
+
+        // initialize properties
         $this->session = $session;
-        $this->prior = $this->session->get(static::STORE_KEY, $collection);
+        $this->prior = $this->session->get($this->session_key, $collection);
         $this->current = $collection;
     }
 
@@ -55,7 +59,7 @@ class SessionAlertsStore implements AlertsStore
             'message' => $message
         ]);
 
-        $this->session->flash(static::STORE_KEY, $this->current);
+        $this->session->flash($this->session_key, $this->current);
 
         return $this;
     }
@@ -86,12 +90,5 @@ class SessionAlertsStore implements AlertsStore
         return $this->prior()->filter(function ($item) use ($type) {
             return $item['type'] === static::str_type($type);
         });
-    }
-
-    /**
-     * @return string
-     */
-    public function storeKey(){
-        return static::STORE_KEY;
     }
 }

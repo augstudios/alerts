@@ -14,7 +14,19 @@ class AlertsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // events later???
+        // config
+        $this->publishes([
+            __DIR__ . '/../../config/alerts.php' => config_path('augstudios/alerts.php'),
+        ]);
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/alerts.php', 'augstudios/alerts'
+        );
+
+        // views
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'alerts');
+        $this->publishes([
+            __DIR__ . '/../../views' => base_path('resources/views/vendor/alerts'),
+        ]);
     }
 
     /**
@@ -31,6 +43,7 @@ class AlertsServiceProvider extends ServiceProvider
         $this->app->singleton('alerts', function () {
             return $this->app->make('Augstudios\Alerts\Alerts');
         });
+
     }
 
 }

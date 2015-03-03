@@ -6,7 +6,6 @@ use Illuminate\Support\Collection;
 
 interface AlertsStore
 {
-
     /**
      * @param string           $message
      * @param AlertType|string $type
@@ -31,9 +30,4 @@ interface AlertsStore
      * @return mixed
      */
     public function priorOfType($type);
-
-    /**
-     * @return string
-     */
-    public function storeKey();
 }
