@@ -28,7 +28,7 @@ class SessionAlertsStore implements AlertsStore
     function __construct(Store $session, Collection $collection, Repository $config)
     {
         // set configurable options
-        $this->session_key = $config->get('augstudios/alerts.session_key', 'alerts');
+        $this->session_key = $config->get('augstudios.alerts.session_key', 'alerts');
 
         // initialize properties
         $this->session = $session;

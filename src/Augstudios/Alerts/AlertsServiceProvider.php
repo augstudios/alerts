@@ -19,7 +19,7 @@ class AlertsServiceProvider extends ServiceProvider
             __DIR__ . '/../../config/alerts.php' => config_path('augstudios/alerts.php'),
         ]);
         $this->mergeConfigFrom(
-            __DIR__ . '/../../config/alerts.php', 'augstudios/alerts'
+            __DIR__ . '/../../config/alerts.php', 'augstudios.alerts'
         );
 
         // views
