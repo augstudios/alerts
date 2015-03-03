@@ -28,11 +28,11 @@ class AlertsTest extends PHPUnit_Framework_TestCase
     public function it_adds_alerts()
     {
         $this->store
-            ->shouldReceive('add')
+            ->shouldReceive('flash')
             ->with('Testing adding alerts!', 'info')
             ->andReturnSelf();
 
-        $result = $this->alerts->add('Testing adding alerts!', 'info');
+        $result = $this->alerts->flash('Testing adding alerts!', 'info');
 
         $this->assertSame($this->alerts, $result);
     }
@@ -41,11 +41,11 @@ class AlertsTest extends PHPUnit_Framework_TestCase
     public function it_adds_success_alerts()
     {
         $this->store
-            ->shouldReceive('add')
+            ->shouldReceive('flash')
             ->with('Testing adding success alerts!', 'success')
             ->andReturnSelf();
 
-        $result = $this->alerts->success('Testing adding success alerts!');
+        $result = $this->alerts->flashSuccess('Testing adding success alerts!');
 
         $this->assertSame($this->alerts, $result);
     }
@@ -54,11 +54,11 @@ class AlertsTest extends PHPUnit_Framework_TestCase
     public function it_adds_danger_alerts()
     {
         $this->store
-            ->shouldReceive('add')
+            ->shouldReceive('flash')
             ->with('Testing adding danger alerts!', 'danger')
             ->andReturnSelf();
 
-        $result = $this->alerts->danger('Testing adding danger alerts!');
+        $result = $this->alerts->flashDanger('Testing adding danger alerts!');
 
         $this->assertSame($this->alerts, $result);
     }
@@ -67,11 +67,11 @@ class AlertsTest extends PHPUnit_Framework_TestCase
     public function it_adds_warning_alerts()
     {
         $this->store
-            ->shouldReceive('add')
+            ->shouldReceive('flash')
             ->with('Testing adding warning alerts!', 'warning')
             ->andReturnSelf();
 
-        $result = $this->alerts->warning('Testing adding warning alerts!');
+        $result = $this->alerts->flashWarning('Testing adding warning alerts!');
 
         $this->assertSame($this->alerts, $result);
     }
@@ -80,28 +80,28 @@ class AlertsTest extends PHPUnit_Framework_TestCase
     public function it_adds_info_alerts()
     {
         $this->store
-            ->shouldReceive('add')
+            ->shouldReceive('flash')
             ->with('Testing adding info alerts!', 'info')
             ->andReturnSelf();
 
-        $result = $this->alerts->info('Testing adding info alerts!');
+        $result = $this->alerts->flashInfo('Testing adding info alerts!');
 
         $this->assertSame($this->alerts, $result);
     }
 
     /** @test */
-    public function it_gets_prior_alerts(){
+    public function it_gets_alerts(){
         $this->store
             ->shouldReceive('prior')
             ->andReturn(Illuminate\Support\Collection::make());
 
-        $result = $this->alerts->prior();
+        $result = $this->alerts->all();
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $result);
     }
 
     /** @test */
-    public function it_gets_prior_alerts_by_type(){
+    public function it_gets_alerts_by_type(){
         $type = Augstudios\Alerts\AlertType::Info;
 
         $this->store
@@ -109,7 +109,7 @@ class AlertsTest extends PHPUnit_Framework_TestCase
             ->with($type)
             ->andReturn(Illuminate\Support\Collection::make());
 
-        $result = $this->alerts->priorOfType($type);
+        $result = $this->alerts->ofType($type);
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $result);
     }

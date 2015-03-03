@@ -1,6 +1,6 @@
 {
     "name": "augstudios/alerts",
-    "description": "Package for sending alerts with Laravel.",
+    "description": "Package for sending alerts with Laravel 5.",
     "keywords": ["laravel", "alerts"],
     "license": "MIT",
     "authors": [

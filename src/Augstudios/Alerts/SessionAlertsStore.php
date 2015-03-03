@@ -32,8 +32,8 @@ class SessionAlertsStore implements AlertsStore
 
         // initialize properties
         $this->session = $session;
-        $this->prior = $this->session->get($this->session_key, $collection);
-        $this->current = $collection;
+        $this->prior = $this->session->get($this->session_key, clone $collection);
+        $this->current = clone $collection;
     }
 
     /**
@@ -52,7 +52,7 @@ class SessionAlertsStore implements AlertsStore
      *
      * @return $this
      */
-    public function add($message, $type)
+    public function flash($message, $type)
     {
         $this->current->push([
             'type' => static::str_type($type),

@@ -27,9 +27,9 @@ class Alerts
      *
      * @return Alerts
      */
-    public function add($message, $type)
+    public function flash($message, $type)
     {
-        $this->store->add($message, $type);
+        $this->store->flash($message, $type);
 
         return $this;
     }
@@ -39,9 +39,9 @@ class Alerts
      *
      * @return Alerts
      */
-    public function success($message)
+    public function flashSuccess($message)
     {
-        return $this->add($message, AlertType::Success);
+        return $this->flash($message, AlertType::Success);
     }
 
     /**
@@ -49,9 +49,9 @@ class Alerts
      *
      * @return Alerts
      */
-    public function danger($message)
+    public function flashDanger($message)
     {
-        return $this->add($message, AlertType::Danger);
+        return $this->flash($message, AlertType::Danger);
     }
 
     /**
@@ -59,9 +59,9 @@ class Alerts
      *
      * @return Alerts
      */
-    public function warning($message)
+    public function flashWarning($message)
     {
-        return $this->add($message, AlertType::Warning);
+        return $this->flash($message, AlertType::Warning);
     }
 
     /**
@@ -69,15 +69,15 @@ class Alerts
      *
      * @return mixed
      */
-    public function info($message)
+    public function flashInfo($message)
     {
-        return $this->add($message, AlertType::Info);
+        return $this->flash($message, AlertType::Info);
     }
 
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function prior()
+    public function all()
     {
         return $this->store->prior();
     }
@@ -87,7 +87,7 @@ class Alerts
      *
      * @return \Illuminate\Support\Collection
      */
-    public function priorOfType($type)
+    public function ofType($type)
     {
         return $this->store->priorOfType($type);
     }

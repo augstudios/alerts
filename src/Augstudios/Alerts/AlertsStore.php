@@ -12,7 +12,7 @@ interface AlertsStore
      *
      * @return mixed
      */
-    public function add($message, $type);
+    public function flash($message, $type);
 
     /**
      * @return Collection
